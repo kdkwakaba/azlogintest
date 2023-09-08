@@ -1,9 +1,6 @@
 name: Run Azure Login with OpenID Connect
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -17,9 +14,9 @@ jobs:
       - name: "Az CLI login"
         uses: azure/login@v1
         with:
-          client-id: "c618b804-1400-48db-a977-311aae8ead78"
-          tenant-id: "bd175dd1-316f-4e80-be4d-8e93d6aa1df0"
-          subscription-id: "50ba192e-4ccb-4ffe-9533-638e4d55b475"
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: "Run Azure CLI commands"
         run: |
